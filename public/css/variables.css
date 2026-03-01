@@ -1,0 +1,414 @@
+/* ============================================
+   CODZY — Design Tokens & CSS Custom Properties
+   ============================================ */
+
+:root {
+  /* ── Navy Palette ── */
+  --navy-deep: #0A192F;
+  --navy-mid: #0F1E3D;
+  --navy-light: #162A50;
+  --navy-glow: #1A3A6B;
+
+  /* ── Gold Palette ── */
+  --gold-primary: #D4AF37;
+  --gold-dark: #C5A100;
+  --gold-light: #E8C84A;
+  --gold-muted: #B8972E;
+  --gold-glow: rgba(212, 175, 55, 0.35);
+
+  /* ── Grey Palette ── */
+  --grey-900: #1C1C1C;
+  --grey-800: #2E2E2E;
+  --grey-600: #555555;
+  --grey-400: #8A8A8A;
+  --grey-300: #B0B0B0;
+  --grey-200: #D0D0D0;
+  --grey-100: #E8E8E8;
+  --grey-50: #F5F5F5;
+
+  /* ── Semantic Colors (Dark Theme — default) ── */
+  --bg-primary: var(--navy-deep);
+  --bg-secondary: var(--navy-mid);
+  --bg-card: rgba(15, 30, 61, 0.6);
+  --bg-glass: rgba(10, 25, 47, 0.65);
+  --text-primary: #FFFFFF;
+  --text-secondary: var(--grey-300);
+  --text-muted: var(--grey-400);
+  --accent: var(--gold-primary);
+  --accent-dark: var(--gold-dark);
+  --accent-light: var(--gold-light);
+  --border-color: rgba(212, 175, 55, 0.15);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+
+  /* ── Glass Effect ── */
+  --glass-bg: rgba(10, 25, 47, 0.55);
+  --glass-border: rgba(212, 175, 55, 0.12);
+  --glass-blur: 16px;
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+
+  /* ── Typography ── */
+  --font-heading: 'Outfit', 'Inter', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  /* Type Scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+
+  /* ── Spacing ── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* ── Radius ── */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px var(--gold-glow);
+  --shadow-glow-lg: 0 0 40px var(--gold-glow);
+
+  /* ── Transitions ── */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Z-Index ── */
+  --z-behind: -1;
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-cursor: 9999;
+
+  /* ── Container ── */
+  --container-max: 1280px;
+  --container-sm: 960px;
+  --navbar-height: 72px;
+}
+
+/* ============================================
+   Light Theme Overrides
+   (still uses navy / gold / grey palette)
+   ============================================ */
+
+/* ═══════════════════════════════════════════
+   TRUE INVERSION:
+   Dark mode        →  Light mode
+   Navy bg          →  Gold-tinted white bg
+   White text       →  Black/dark text
+   Gold accent      →  Navy accent
+   Navy accent      →  Gold accent
+   Black elements   →  White elements
+   ═══════════════════════════════════════════ */
+
+[data-theme="light"] {
+  /* Backgrounds: dark navy → warm white */
+  --bg-primary: #F8F4EE;
+  --bg-secondary: #F0EBE3;
+  --bg-card: rgba(255, 255, 255, 0.75);
+  --bg-glass: rgba(255, 255, 255, 0.55);
+
+  /* Text: white → black/dark */
+  --text-primary: #111111;
+  --text-secondary: #333333;
+  --text-muted: #666666;
+
+  /* Accent: gold → navy */
+  --accent: var(--navy-deep);
+  --accent-dark: var(--navy-mid);
+  --accent-light: var(--navy-light);
+
+  /* Borders */
+  --border-color: rgba(10, 25, 47, 0.15);
+  --border-subtle: rgba(10, 25, 47, 0.08);
+
+  /* Glass */
+  --glass-bg: rgba(255, 255, 255, 0.5);
+  --glass-border: rgba(10, 25, 47, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+
+  /* Shadows: dark → soft */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 20px rgba(10, 25, 47, 0.12);
+  --shadow-glow-lg: 0 0 40px rgba(10, 25, 47, 0.15);
+  --gold-glow: rgba(10, 25, 47, 0.15);
+}
+
+/* ── Cursor: gold → navy ── */
+[data-theme="light"] .cursor-dot {
+  background: var(--navy-deep);
+}
+
+[data-theme="light"] .cursor-ring {
+  border-color: rgba(10, 25, 47, 0.35);
+}
+
+[data-theme="light"] .cursor-dot.hover {
+  background: var(--navy-light);
+}
+
+[data-theme="light"] .cursor-ring.hover {
+  border-color: var(--navy-deep);
+}
+
+/* ── Gradient text: gold gradient → navy gradient ── */
+[data-theme="light"] .text-gradient {
+  background: linear-gradient(135deg, var(--navy-deep), var(--navy-light), var(--navy-glow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Buttons: gold bg → navy bg ── */
+[data-theme="light"] .btn-primary {
+  background: linear-gradient(135deg, var(--navy-mid), var(--navy-deep)) !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="light"] .btn-primary:hover {
+  color: #FFFFFF !important;
+  box-shadow: 0 0 20px rgba(10, 25, 47, 0.3);
+}
+
+[data-theme="light"] .btn-outline {
+  border-color: var(--navy-deep) !important;
+  color: var(--navy-deep) !important;
+}
+
+[data-theme="light"] .btn-outline:hover {
+  background: var(--navy-deep) !important;
+  color: var(--gold-primary) !important;
+}
+
+/* ── Logo: navy accent → gold (inversion) ── */
+[data-theme="light"] .logo-accent {
+  color: var(--gold-primary) !important;
+}
+
+[data-theme="light"] .nav-logo {
+  color: #111 !important;
+}
+
+/* ── Hero: navy bg → warm white ── */
+[data-theme="light"] .hero {
+  background: linear-gradient(135deg, #F8F4EE 0%, #F0EBE3 40%, #E8E2D8 100%);
+}
+
+[data-theme="light"] .hero-badge {
+  background: rgba(10, 25, 47, 0.06);
+  border-color: rgba(10, 25, 47, 0.15);
+  color: var(--navy-deep);
+}
+
+[data-theme="light"] .hero-stat-num {
+  color: var(--navy-deep);
+}
+
+/* ── Navbar ── */
+[data-theme="light"] .navbar.scrolled {
+  background: rgba(248, 244, 238, 0.9);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .nav-links a:hover,
+[data-theme="light"] .nav-links a.active {
+  color: var(--navy-deep) !important;
+}
+
+[data-theme="light"] .nav-links a::after {
+  background: linear-gradient(90deg, var(--navy-mid), var(--navy-deep)) !important;
+}
+
+/* ── Glass Cards: dark glass → white glass ── */
+[data-theme="light"] .glass-card {
+  background: rgba(255, 255, 255, 0.65);
+  border-color: rgba(10, 25, 47, 0.08);
+}
+
+/* ── Newsletter ── */
+[data-theme="light"] .newsletter-box {
+  background: linear-gradient(135deg, rgba(10, 25, 47, 0.03) 0%, rgba(255, 255, 255, 0.8) 100%);
+}
+
+/* ── Footer: dark → light ── */
+[data-theme="light"] .footer {
+  background: #E8E2D8;
+}
+
+[data-theme="light"] .footer-heading {
+  color: var(--navy-deep);
+}
+
+[data-theme="light"] .footer-social a:hover {
+  background: var(--navy-deep);
+  color: var(--gold-primary);
+  border-color: var(--navy-deep);
+}
+
+[data-theme="light"] .newsletter-form button {
+  background: linear-gradient(135deg, var(--navy-mid), var(--navy-deep));
+  color: var(--gold-primary);
+}
+
+/* ── Loading / Transitions ── */
+[data-theme="light"] .loading-screen {
+  background: #F8F4EE;
+}
+
+[data-theme="light"] .loading-screen .loading-text {
+  color: #111;
+}
+
+[data-theme="light"] .loading-screen .loading-text span {
+  color: var(--navy-deep);
+}
+
+[data-theme="light"] .page-transition {
+  background: linear-gradient(135deg, #F8F4EE, #F0EBE3);
+}
+
+/* ── FAQ ── */
+[data-theme="light"] .faq-question {
+  background: rgba(255, 255, 255, 0.5);
+  color: #111;
+}
+
+[data-theme="light"] .faq-icon {
+  color: var(--navy-deep);
+}
+
+/* ── Portfolio: dark navy cards → light gold-tinted cards ── */
+[data-theme="light"] .portfolio-img {
+  background: linear-gradient(135deg, #F0EBE3, #E8DFD0) !important;
+}
+
+/* ── Portfolio overlays (keep dark for contrast) ── */
+[data-theme="light"] .portfolio-overlay h3 {
+  color: var(--navy-deep);
+}
+
+[data-theme="light"] .portfolio-overlay p {
+  color: #333;
+}
+
+[data-theme="light"] .portfolio-overlay {
+  background: linear-gradient(180deg, transparent 30%, rgba(248, 244, 238, 0.95) 100%);
+}
+
+[data-theme="light"] .portfolio-tag {
+  background: rgba(10, 25, 47, 0.08);
+  border-color: rgba(10, 25, 47, 0.2);
+  color: var(--navy-deep);
+}
+
+/* ── Page Hero (About, Contact) ── */
+[data-theme="light"] .page-hero {
+  background: linear-gradient(135deg, #F8F4EE, #F0EBE3);
+}
+
+/* ── Testimonials ── */
+[data-theme="light"] .testimonial-avatar {
+  background: linear-gradient(135deg, var(--navy-mid), var(--navy-deep));
+  color: var(--gold-primary);
+}
+
+[data-theme="light"] .testimonial-stars {
+  color: var(--navy-deep);
+}
+
+/* ── Login Section ── */
+[data-theme="light"] .login-section {
+  background: linear-gradient(135deg, #F8F4EE, #F0EBE3);
+}
+
+/* ── Case Study Modal ── */
+[data-theme="light"] .case-study-modal {
+  background: rgba(248, 244, 238, 0.9);
+}
+
+/* ── Templates / Cart ── */
+[data-theme="light"] .templates-section,
+[data-theme="light"] .cart-section {
+  background: var(--bg-primary);
+}
+
+/* ── Mobile Nav ── */
+[data-theme="light"] .nav-links {
+  background: var(--bg-secondary);
+}
+
+/* ── Inputs: dark bg → white bg ── */
+[data-theme="light"] .input-wrapper input,
+[data-theme="light"] .input-wrapper textarea,
+[data-theme="light"] .newsletter-form input,
+[data-theme="light"] .newsletter-form-hero input {
+  background: rgba(255, 255, 255, 0.85);
+  color: #111;
+  border-color: rgba(10, 25, 47, 0.12);
+}
+
+/* ── Back-to-top: gold → navy ── */
+[data-theme="light"] .back-to-top {
+  background: linear-gradient(135deg, var(--navy-mid), var(--navy-deep));
+  color: var(--gold-primary);
+}
+
+/* ── Theme Toggle Thumb ── */
+[data-theme="light"] .theme-toggle {
+  background: var(--grey-200);
+}
+
+[data-theme="light"] .theme-toggle .toggle-thumb {
+  background: linear-gradient(135deg, var(--navy-mid), var(--navy-deep));
+  color: #fff;
+}
+
+/* ── Cart item icons in light mode ── */
+[data-theme="light"] .cart-count {
+  background: var(--navy-deep);
+  color: var(--gold-primary);
+}
+
+/* ── Social icon buttons (Contact page) ── */
+[data-theme="light"] .social-icon-btn:hover {
+  background: var(--navy-deep);
+  color: var(--gold-primary);
+  border-color: var(--navy-deep);
+}

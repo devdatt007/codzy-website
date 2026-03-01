@@ -1,0 +1,498 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codzy — Premium Web Development Agency</title>
+  <meta name="description"
+    content="Codzy is a premium web development agency crafting stunning, high-performance digital experiences that convert visitors into customers." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+
+<body>
+
+  <!-- Loading Screen -->
+  <div class="loading-screen" aria-hidden="true">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">COD<span>ZY</span></div>
+    <div class="loading-recommend">We recommend dark theme</div>
+  </div>
+
+  <!-- Page Transition -->
+  <div class="page-transition" aria-hidden="true"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay" aria-hidden="true"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-logo">COD<span class="logo-accent">ZY</span></a>
+
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="templates.html">Templates</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+      </div>
+
+      <div class="nav-right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <div class="toggle-thumb">☀</div>
+        </button>
+        <a href="cart.html" class="nav-cart" aria-label="Shopping cart">
+          🛒
+          <span class="cart-count" style="display:none;">0</span>
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO SECTION ============ -->
+  <section class="hero" id="hero">
+    <canvas id="particles-canvas" aria-hidden="true"></canvas>
+    <div class="hero-gradient-overlay"></div>
+    <div class="hero-content container">
+      <div class="hero-badge reveal">✦ Premium Digital Experiences</div>
+      <h1 class="hero-title reveal">
+        We Build <span class="text-gradient">Extraordinary</span><br />Digital Products
+      </h1>
+      <p class="hero-subtitle reveal">
+        Transform your brand with cutting-edge web solutions that captivate audiences,<br class="hide-mobile" />
+        drive conversions, and set you apart from the competition.
+      </p>
+      <div class="hero-cta reveal">
+        <a href="contact.html" class="btn btn-primary btn-lg">Get Started</a>
+        <a href="templates.html" class="btn btn-outline btn-lg">View Templates</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-count="250">0</span>+
+          <span class="hero-stat-label">Projects Delivered</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-count="120">0</span>+
+          <span class="hero-stat-label">Happy Clients</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-count="15">0</span>+
+          <span class="hero-stat-label">Awards Won</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <span>Scroll Down</span>
+      <div class="scroll-arrow">↓</div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES SECTION ============ -->
+  <section class="section services-section" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>What We <span class="text-gradient">Deliver</span></h2>
+        <div class="accent-line"></div>
+        <p>End-to-end digital solutions designed to accelerate your business growth.</p>
+      </div>
+
+      <div class="services-grid reveal-stagger">
+        <div class="service-card glass-card">
+          <div class="service-icon">⚡</div>
+          <h3>Web Development</h3>
+          <p>High-performance, scalable websites and web applications built with modern frameworks.</p>
+        </div>
+        <div class="service-card glass-card">
+          <div class="service-icon">🎨</div>
+          <h3>UI/UX Design</h3>
+          <p>Stunning, user-centric designs that turn visitors into loyal customers.</p>
+        </div>
+        <div class="service-card glass-card">
+          <div class="service-icon">📱</div>
+          <h3>Mobile Apps</h3>
+          <p>Cross-platform mobile experiences that feel native and perform flawlessly.</p>
+        </div>
+        <div class="service-card glass-card">
+          <div class="service-icon">🚀</div>
+          <h3>SEO &amp; Growth</h3>
+          <p>Data-driven strategies to boost your visibility and drive organic traffic.</p>
+        </div>
+        <div class="service-card glass-card">
+          <div class="service-icon">🛡️</div>
+          <h3>Branding</h3>
+          <p>Cohesive brand identities that resonate with your audience and build trust.</p>
+        </div>
+        <div class="service-card glass-card">
+          <div class="service-icon">☁️</div>
+          <h3>Cloud &amp; DevOps</h3>
+          <p>Reliable infrastructure and CI/CD pipelines that keep your products running smoothly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PORTFOLIO SECTION ============ -->
+  <section class="section portfolio-section" id="portfolio">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Featured <span class="text-gradient">Work</span></h2>
+        <div class="accent-line"></div>
+        <p>A selection of projects that showcase our expertise and creative vision.</p>
+      </div>
+
+      <div class="portfolio-grid reveal-stagger">
+        <div class="portfolio-item portfolio-item--large">
+          <div class="portfolio-card glass-card">
+            <div class="portfolio-img" style="background: linear-gradient(135deg, #0F1E3D, #1A3A6B);"></div>
+            <div class="portfolio-overlay">
+              <span class="portfolio-tag">E-Commerce</span>
+              <h3>LuxeStore Redesign</h3>
+              <p>Complete e-commerce platform overhaul resulting in 180% revenue uplift.</p>
+              <button class="btn btn-sm btn-outline" onclick="showCaseStudy('luxestore')">View Case Study</button>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <div class="portfolio-card glass-card">
+            <div class="portfolio-img" style="background: linear-gradient(135deg, #162A50, #0A192F);"></div>
+            <div class="portfolio-overlay">
+              <span class="portfolio-tag">SaaS</span>
+              <h3>DataFlow Dashboard</h3>
+              <p>Real-time analytics dashboard for enterprise clients.</p>
+              <button class="btn btn-sm btn-outline" onclick="showCaseStudy('dataflow')">View Case Study</button>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <div class="portfolio-card glass-card">
+            <div class="portfolio-img" style="background: linear-gradient(135deg, #1C1C1C, #2E2E2E);"></div>
+            <div class="portfolio-overlay">
+              <span class="portfolio-tag">Fintech</span>
+              <h3>PayVault App</h3>
+              <p>Mobile banking experience for the next generation.</p>
+              <button class="btn btn-sm btn-outline" onclick="showCaseStudy('payvault')">View Case Study</button>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <div class="portfolio-card glass-card">
+            <div class="portfolio-img" style="background: linear-gradient(135deg, #0A192F, #D4AF37 200%);"></div>
+            <div class="portfolio-overlay">
+              <span class="portfolio-tag">Portfolio</span>
+              <h3>Archon Studio</h3>
+              <p>Award-winning architectural portfolio website.</p>
+              <button class="btn btn-sm btn-outline" onclick="showCaseStudy('archon')">View Case Study</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Study Modal -->
+  <div class="case-study-modal" id="case-study-modal">
+    <div class="case-study-content glass-card">
+      <button class="case-study-close" onclick="closeCaseStudy()">✕</button>
+      <div class="case-study-header">
+        <span class="portfolio-tag" id="cs-tag"></span>
+        <h2 id="cs-title"></h2>
+      </div>
+      <div class="case-study-body">
+        <p id="cs-description"></p>
+        <div class="case-study-stats">
+          <div class="cs-stat"><span class="cs-stat-num">180%</span><span>Revenue Increase</span></div>
+          <div class="cs-stat"><span class="cs-stat-num">3.2s</span><span>Faster Load</span></div>
+          <div class="cs-stat"><span class="cs-stat-num">95%</span><span>Client Satisfaction</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TESTIMONIALS CAROUSEL ============ -->
+  <section class="section testimonials-section" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Client <span class="text-gradient">Love</span></h2>
+        <div class="accent-line"></div>
+        <p>Don't just take our word for it — hear from our valued partners.</p>
+      </div>
+
+      <div class="testimonials-carousel reveal">
+        <div class="testimonials-track" id="testimonials-track">
+          <div class="testimonial-card glass-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Codzy transformed our digital presence completely. The attention to detail and
+              performance optimization was beyond our expectations."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">JD</div>
+              <div>
+                <strong>James Donovan</strong>
+                <span>CEO, TechNova Inc.</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card glass-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"The templates are stunning and incredibly well-coded. Our conversion rates
+              tripled within the first month of going live."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">SK</div>
+              <div>
+                <strong>Sarah Kim</strong>
+                <span>CMO, BrightEdge</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card glass-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Working with Codzy felt like having a world-class in-house team. They delivered
+              ahead of schedule and exceeded every benchmark."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">MR</div>
+              <div>
+                <strong>Michael Reed</strong>
+                <span>Founder, VaultPay</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="carousel-prev" aria-label="Previous testimonial">←</button>
+          <div class="carousel-dots" id="carousel-dots"></div>
+          <button class="carousel-btn" id="carousel-next" aria-label="Next testimonial">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ SECTION ============ -->
+  <section class="section faq-section" id="faq">
+    <div class="container container-sm">
+      <div class="section-header reveal">
+        <h2>Frequently <span class="text-gradient">Asked</span></h2>
+        <div class="accent-line"></div>
+      </div>
+
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>How long does a typical project take?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Most projects are delivered within 4–8 weeks, depending on scope and complexity. We provide a detailed
+              timeline during the proposal phase so you know exactly what to expect.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What technologies do you use?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>We work with React, Next.js, Vue, Node.js, Python, and modern cloud platforms. We choose the best stack
+              for each project to ensure peak performance and scalability.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Do you provide ongoing support?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely. We offer flexible maintenance and support plans to keep your project running smoothly,
+              including security updates, performance monitoring, and feature enhancements.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Can I purchase and customize a template?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes! Our premium templates are fully customizable. Purchase a template and we can tailor it to your
+              brand, or you can customize it yourself — they're built with clean, well-documented code.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What is your pricing model?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>We offer both fixed-price and retainer-based models. During our initial consultation, we'll recommend the
+              best approach based on your project needs and budget.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NEWSLETTER SECTION ============ -->
+  <section class="section newsletter-section" id="newsletter">
+    <div class="container container-sm">
+      <div class="newsletter-box glass-card reveal">
+        <h2>Stay in the <span class="text-gradient">Loop</span></h2>
+        <p>Get exclusive insights, design tips, and early access to our latest templates delivered to your inbox.</p>
+        <form class="newsletter-form-hero">
+          <input type="email" placeholder="Enter your email" required aria-label="Email address" />
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">COD<span class="logo-accent">ZY</span></div>
+          <p>Crafting premium digital experiences that drive growth and leave lasting impressions.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="GitHub">⌘</a>
+            <a href="#" aria-label="Dribbble">◉</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Company</div>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Resources</div>
+          <ul class="footer-links">
+            <li><a href="templates.html">Templates</a></li>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <div class="footer-heading">Newsletter</div>
+          <p>Subscribe for the latest updates and exclusive offers.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email" required aria-label="Email" />
+            <button type="submit">→</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Codzy. All rights reserved.</span>
+        <span>Designed with ✦ by Codzy</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+  <!-- Scripts -->
+  <script src="js/particles.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    /* FAQ Accordion */
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        btn.setAttribute('aria-expanded', !isOpen);
+      });
+    });
+
+    /* Testimonials Carousel */
+    (function () {
+      const track = document.getElementById('testimonials-track');
+      const cards = track?.querySelectorAll('.testimonial-card');
+      const dotsContainer = document.getElementById('carousel-dots');
+      const prevBtn = document.getElementById('carousel-prev');
+      const nextBtn = document.getElementById('carousel-next');
+      if (!track || !cards?.length) return;
+
+      let current = 0;
+      const total = cards.length;
+
+      for (let i = 0; i < total; i++) {
+        const dot = document.createElement('span');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      }
+
+      function goTo(index) {
+        current = (index + total) % total;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+        });
+      }
+
+      prevBtn?.addEventListener('click', () => goTo(current - 1));
+      nextBtn?.addEventListener('click', () => goTo(current + 1));
+
+      let autoplay = setInterval(() => goTo(current + 1), 5000);
+      track.addEventListener('mouseenter', () => clearInterval(autoplay));
+      track.addEventListener('mouseleave', () => {
+        autoplay = setInterval(() => goTo(current + 1), 5000);
+      });
+    })();
+
+    /* Case Study Modal */
+    const caseStudies = {
+      luxestore: { tag: 'E-Commerce', title: 'LuxeStore Redesign', description: 'We completely redesigned the LuxeStore e-commerce platform, implementing a modern UI, optimized checkout flow, and lightning-fast performance. The result was a 180% revenue increase and a 62% reduction in cart abandonment within the first quarter.' },
+      dataflow: { tag: 'SaaS', title: 'DataFlow Dashboard', description: 'Built a real-time analytics dashboard handling millions of data points per second. The responsive, intuitive interface allows enterprise clients to make data-driven decisions effortlessly.' },
+      payvault: { tag: 'Fintech', title: 'PayVault App', description: 'Designed and developed a next-generation mobile banking app with biometric authentication, instant transfers, and investment tracking — all wrapped in a sleek, trustworthy UI.' },
+      archon: { tag: 'Portfolio', title: 'Archon Studio', description: 'Created an award-winning portfolio site for a leading architectural firm, featuring immersive 3D project showcases, elegant animations, and an ultra-clean design language.' },
+    };
+
+    function showCaseStudy(id) {
+      const data = caseStudies[id];
+      if (!data) return;
+      document.getElementById('cs-tag').textContent = data.tag;
+      document.getElementById('cs-title').textContent = data.title;
+      document.getElementById('cs-description').textContent = data.description;
+      document.getElementById('case-study-modal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCaseStudy() {
+      document.getElementById('case-study-modal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('case-study-modal')?.addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeCaseStudy();
+    });
+  </script>
+
+</body>
+
+</html>

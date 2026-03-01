@@ -1,0 +1,280 @@
+/* ============================================
+   CODZY — Login Page Styles
+   ============================================ */
+
+.login-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--navbar-height) var(--space-6) var(--space-8);
+    background: linear-gradient(135deg, var(--navy-deep), var(--navy-mid));
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Floating BG Shapes ── */
+.login-bg-shapes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.bg-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    right: -100px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+    animation: floatSlow 12s ease-in-out infinite;
+}
+
+.shape-2 {
+    width: 300px;
+    height: 300px;
+    bottom: -80px;
+    left: -80px;
+    background: radial-gradient(circle, rgba(22, 42, 80, 0.4) 0%, transparent 70%);
+    animation: floatSlow 15s ease-in-out infinite reverse;
+}
+
+.shape-3 {
+    width: 200px;
+    height: 200px;
+    top: 40%;
+    left: 10%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+    animation: float 10s ease-in-out infinite;
+}
+
+/* ── Login Card ── */
+.login-card {
+    width: 100%;
+    max-width: 440px;
+    padding: var(--space-10);
+    z-index: 2;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: var(--space-8);
+}
+
+.login-logo {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    font-weight: var(--fw-extrabold);
+    margin-bottom: var(--space-4);
+}
+
+.login-header h1 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-2);
+}
+
+.login-header p {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+}
+
+/* ── Form Groups ── */
+.form-group {
+    margin-bottom: var(--space-5);
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: var(--space-4) var(--space-4) var(--space-2);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: var(--text-base);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.input-wrapper input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--gold-glow);
+}
+
+/* Floating label */
+.input-wrapper label {
+    position: absolute;
+    top: 50%;
+    left: var(--space-4);
+    transform: translateY(-50%);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    pointer-events: none;
+    transition: all var(--transition-base);
+}
+
+.input-wrapper input:focus+label,
+.input-wrapper input:not(:placeholder-shown)+label {
+    top: 8px;
+    font-size: var(--text-xs);
+    color: var(--accent);
+    transform: translateY(0);
+}
+
+.input-glow {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-primary));
+    transition: width var(--transition-base), left var(--transition-base);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.input-wrapper input:focus~.input-glow {
+    width: 100%;
+    left: 0;
+}
+
+/* Error */
+.form-error {
+    display: block;
+    font-size: var(--text-xs);
+    color: #e74c3c;
+    min-height: 18px;
+    margin-top: var(--space-1);
+    transition: opacity var(--transition-fast);
+}
+
+.form-group.error .input-wrapper input {
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.15);
+}
+
+/* ── Form Options ── */
+.form-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-6);
+    font-size: var(--text-sm);
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.remember-me input {
+    display: none;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border-subtle);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+.remember-me input:checked+.checkmark {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.remember-me input:checked+.checkmark::after {
+    content: '✓';
+    color: var(--navy-deep);
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.forgot-link {
+    color: var(--accent);
+    font-size: var(--text-sm);
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+/* ── Login Button ── */
+.login-btn {
+    width: 100%;
+}
+
+/* ── Divider ── */
+.login-divider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin: var(--space-6) 0;
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.login-divider::before,
+.login-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-subtle);
+}
+
+/* ── Social Login ── */
+.social-login {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center;
+    margin-bottom: var(--space-6);
+}
+
+.social-btn {
+    width: 56px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-lg);
+    font-weight: var(--fw-bold);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.social-btn:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+}
+
+/* ── Signup Link ── */
+.login-signup {
+    text-align: center;
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+}
+
+.login-signup a {
+    color: var(--accent);
+    font-weight: var(--fw-semibold);
+}
+
+.login-signup a:hover {
+    text-decoration: underline;
+}
