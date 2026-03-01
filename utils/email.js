@@ -5,6 +5,8 @@
 
 const nodemailer = require('nodemailer');
 
+const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
+
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -38,7 +40,7 @@ async function sendWelcomeEmail(userEmail, userName, isFirstLogin = false) {
                         <p style="color:#CCD6F6;line-height:1.7;margin:0 0 24px;">
                             Explore our premium templates, manage your projects, and build something extraordinary.
                         </p>
-                        <a href="http://localhost:3000/templates.html" style="display:inline-block;padding:12px 28px;background:linear-gradient(135deg,#B8860B,#D4AF37);color:#0A192F;font-weight:700;text-decoration:none;border-radius:8px;font-size:14px;">Browse Templates</a>
+                        <a href="${BASE_URL}/templates.html" style="display:inline-block;padding:12px 28px;background:linear-gradient(135deg,#B8860B,#D4AF37);color:#0A192F;font-weight:700;text-decoration:none;border-radius:8px;font-size:14px;">Browse Templates</a>
                     </div>
                     <div style="padding:16px 32px;border-top:1px solid rgba(255,255,255,0.05);text-align:center;">
                         <p style="color:#4A5568;font-size:11px;margin:0;">© 2026 Codzy. All rights reserved.</p>
@@ -92,7 +94,7 @@ async function sendOrderNotification(order, user) {
                         </div>
                     </div>
                     <div style="padding:16px 32px;border-top:1px solid rgba(255,255,255,0.05);text-align:center;">
-                        <a href="http://localhost:3000/admin.html" style="color:#D4AF37;font-size:13px;text-decoration:none;">View in Admin Dashboard →</a>
+                        <a href="${BASE_URL}/admin.html" style="color:#D4AF37;font-size:13px;text-decoration:none;">View in Admin Dashboard →</a>
                     </div>
                 </div>
             `,
@@ -171,7 +173,7 @@ async function sendOrderConfirmation(userEmail, userName, order) {
                             <p style="margin:4px 0;color:#D4AF37;font-size:18px;font-weight:700;">Total: $${Number(order.total).toFixed(2)}</p>
                         </div>
                         <p style="color:#8892B0;line-height:1.7;margin:24px 0 0;font-size:13px;">
-                            If you have any questions about your order, feel free to <a href="http://localhost:3000/contact.html" style="color:#D4AF37;">contact us</a>.
+                            If you have any questions about your order, feel free to <a href="${BASE_URL}/contact.html" style="color:#D4AF37;">contact us</a>.
                         </p>
                     </div>
                     <div style="padding:16px 32px;border-top:1px solid rgba(255,255,255,0.05);text-align:center;">
