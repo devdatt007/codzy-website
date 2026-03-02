@@ -217,13 +217,16 @@
   color: var(--gold-primary) !important;
 }
 
-/* ── Logo: navy accent → gold (inversion) ── */
 [data-theme="light"] .logo-accent {
   color: var(--gold-primary) !important;
 }
 
 [data-theme="light"] .nav-logo {
-  color: #111 !important;
+  background: linear-gradient(90deg, var(--gold-primary), var(--navy-light)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  color: transparent !important;
 }
 
 /* ── Hero: navy bg → warm white ── */

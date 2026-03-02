@@ -188,7 +188,11 @@ h6 {
     font-family: var(--font-heading);
     font-size: var(--text-2xl);
     font-weight: var(--fw-extrabold);
-    color: var(--text-primary);
+    background: linear-gradient(90deg, var(--navy-light), var(--gold-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
     letter-spacing: 1px;
     display: flex;
     align-items: center;
@@ -197,6 +201,17 @@ h6 {
 
 .nav-logo .logo-accent {
     color: var(--accent);
+}
+
+.logo-img {
+    height: 36px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.footer-brand .logo-img {
+    height: 42px;
 }
 
 .nav-links {
