@@ -219,7 +219,9 @@
 
 [data-theme="light"] .filter-btn:hover,
 [data-theme="light"] .filter-btn.active {
-  color: #FFFFFF !important;
+  background: var(--navy-deep) !important;
+  color: var(--gold-primary) !important;
+  border-color: var(--navy-deep) !important;
 }
 
 [data-theme="light"] .logo-accent {
