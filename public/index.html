@@ -440,6 +440,13 @@
       let current = 0;
       const total = cards.length;
 
+      // Fix track width to hold all cards side-by-side exactly
+      track.style.width = `${total * 100}%`;
+      cards.forEach(card => {
+        card.style.width = `${100 / total}%`;
+        card.style.minWidth = 'auto'; // override css min-width just in case
+      });
+
       for (let i = 0; i < total; i++) {
         const dot = document.createElement('span');
         dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
@@ -449,7 +456,8 @@
 
       function goTo(index) {
         current = (index + total) % total;
-        track.style.transform = `translateX(-${current * 100}%)`;
+        // Translate track by the percentage relative to its OWN new width
+        track.style.transform = `translateX(-${current * (100 / total)}%)`;
         dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
           d.classList.toggle('active', i === current);
         });
