@@ -3,7 +3,10 @@
    Express application entry point
    ============================================ */
 
-require('dotenv').config();
+// Load .env only in development — Render injects env vars natively
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
 
 const express = require('express');
 const session = require('express-session');
@@ -15,8 +18,10 @@ const db = require('./db/database');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const isProduction = process.env.NODE_ENV === 'production';
 
 /* ── Middleware ── */
+if (isProduction) app.set('trust proxy', 1); // trust Render's reverse proxy
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -27,7 +32,8 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         httpOnly: true,
-        secure: false, // set to true behind HTTPS in production
+        secure: isProduction,   // true over HTTPS in production
+        sameSite: 'lax',
         maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
     },
 }));
