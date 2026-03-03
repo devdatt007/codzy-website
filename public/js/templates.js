@@ -104,10 +104,9 @@
           <h3>${t.name}</h3>
           <p>${t.description}</p>
         </div>
-        <div class="template-card-footer">
-          <span class="template-price">$${t.price}</span>
+        <div class="template-card-footer" style="padding-top: var(--space-2);">
+          <span class="template-card-tag" style="background: rgba(138, 138, 138, 0.1); border-color: rgba(138, 138, 138, 0.2); color: var(--text-muted); margin: 0;">Coming Soon</span>
           <div class="template-actions">
-            <button class="btn btn-primary btn-sm" onclick="addToCart('${t.id}')">Add to Cart</button>
             <button class="btn btn-outline btn-sm" onclick="showToast('Preview coming soon', '👁️')">Preview</button>
           </div>
         </div>
