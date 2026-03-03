@@ -217,6 +217,11 @@
   color: var(--gold-primary) !important;
 }
 
+[data-theme="light"] .filter-btn:hover,
+[data-theme="light"] .filter-btn.active {
+  color: #FFFFFF !important;
+}
+
 [data-theme="light"] .logo-accent {
   color: var(--gold-primary) !important;
 }
