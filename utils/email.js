@@ -6,8 +6,9 @@
 
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 const BREVO_API_KEY = process.env.BREVO_API_KEY;
-const SENDER_EMAIL = process.env.EMAIL_USER || 'codzy.web@gmail.com';
+const SENDER_EMAIL = process.env.EMAIL_USER || 'hello@codzyweb.co.in';
 const SENDER_NAME = 'Codzy';
+const REPLY_TO_EMAIL = 'codzy.web@gmail.com';
 
 if (!BREVO_API_KEY) {
     console.warn('⚠  BREVO_API_KEY not set — emails will be disabled');
@@ -31,6 +32,7 @@ async function safeSendMail({ to, subject, html }) {
             },
             body: JSON.stringify({
                 sender: { name: SENDER_NAME, email: SENDER_EMAIL },
+                replyTo: { email: REPLY_TO_EMAIL },
                 to: [{ email: to }],
                 subject,
                 htmlContent: html,
