@@ -11,7 +11,12 @@
     const loader = document.querySelector('.loading-screen');
     if (loader) {
       setTimeout(() => loader.classList.add('hidden'), 600);
-      setTimeout(() => loader.remove(), 1200);
+      setTimeout(() => {
+        loader.remove();
+        if (window.initCounterObserver) window.initCounterObserver();
+      }, 1200);
+    } else {
+      if (window.initCounterObserver) window.initCounterObserver();
     }
   });
 
@@ -228,18 +233,20 @@
   };
 
   // Observe stat counters
-  const statEls = document.querySelectorAll('.stats-grid, .stat-counters');
-  statEls.forEach(el => {
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          window.animateCounters();
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-    obs.observe(el);
-  });
+  window.initCounterObserver = function () {
+    const statEls = document.querySelectorAll('.stats-grid, .stat-counters');
+    statEls.forEach(el => {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            window.animateCounters();
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      obs.observe(el);
+    });
+  };
 
   /* ── Newsletter Forms → API ── */
   document.querySelectorAll('.newsletter-form, .newsletter-form-hero').forEach(form => {
