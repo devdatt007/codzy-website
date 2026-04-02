@@ -89,11 +89,24 @@
     text-align: center;
 }
 
+.hero-stat-value {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 2px;
+}
+
 .hero-stat-num {
-    display: block;
+    display: inline-block;
     font-family: var(--font-heading);
     font-size: var(--text-4xl);
     font-weight: var(--fw-extrabold);
+    color: var(--accent);
+}
+
+.hero-stat-symbol {
+    font-size: var(--text-2xl);
+    font-weight: var(--fw-bold);
     color: var(--accent);
 }
 
