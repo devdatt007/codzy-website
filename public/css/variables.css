@@ -117,7 +117,7 @@
   /* ── Container ── */
   --container-max: 1280px;
   --container-sm: 960px;
-  --navbar-height: 72px;
+  --navbar-height: 116px;
 }
 
 /* ============================================
@@ -228,13 +228,7 @@
   color: var(--gold-primary) !important;
 }
 
-[data-theme="light"] .nav-logo {
-  background: linear-gradient(90deg, var(--gold-primary), var(--navy-light)) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-  color: transparent !important;
-}
+
 
 /* ── Hero: navy bg → warm white ── */
 [data-theme="light"] .hero {
