@@ -84,9 +84,9 @@ app.use('/api/templates', require('./routes/templates'));
 app.use('/api/orders', require('./routes/orders'));
 app.use('/api/admin', require('./routes/admin'));
 
-/* ── SPA fallback: serve index.html for any unmatched route ── */
+/* ── 404 Handler ── */
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.status(404).send('Not Found');
 });
 
 /* ── Global error handler ── */
