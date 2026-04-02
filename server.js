@@ -38,7 +38,37 @@ app.use(session({
     },
 }));
 
-/* ── Static Files ── */
+/* ── Clean URL Redirects (Executes before static files) ── */
+app.get('/', (req, res) => {
+    res.redirect(301, '/home');
+});
+
+const redirects = {
+    '/index.html': '/home',
+    '/contact.html': '/contact',
+    '/login.html': '/login',
+    '/about.html': '/about',
+    '/templates.html': '/templates',
+    '/cart.html': '/cart',
+    '/signup.html': '/signup'
+};
+
+Object.keys(redirects).forEach(oldUrl => {
+    app.get(oldUrl, (req, res) => {
+        res.redirect(301, redirects[oldUrl]);
+    });
+});
+
+/* ── Clean URL Routes ── */
+app.get('/home', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
+app.get('/contact', (req, res) => res.sendFile(path.join(__dirname, 'public', 'contact.html')));
+app.get('/login', (req, res) => res.sendFile(path.join(__dirname, 'public', 'login.html')));
+app.get('/about', (req, res) => res.sendFile(path.join(__dirname, 'public', 'about.html')));
+app.get('/templates', (req, res) => res.sendFile(path.join(__dirname, 'public', 'templates.html')));
+app.get('/cart', (req, res) => res.sendFile(path.join(__dirname, 'public', 'cart.html')));
+app.get('/signup', (req, res) => res.sendFile(path.join(__dirname, 'public', 'signup.html')));
+
+/* ── Static Files (Assets) ── */
 app.use(express.static(path.join(__dirname, 'public')));
 
 /* ── Inject Google Client ID for frontend ── */
