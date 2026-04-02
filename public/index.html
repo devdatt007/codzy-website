@@ -143,82 +143,7 @@
     </div>
   </section>
 
-  <!-- ============ PORTFOLIO SECTION ============ -->
-  <section class="section portfolio-section" id="portfolio">
-    <div class="container">
-      <div class="section-header reveal">
-        <h2>Featured <span class="text-gradient">Work</span></h2>
-        <div class="accent-line"></div>
-        <p>A selection of projects that showcase our expertise and creative vision.</p>
-      </div>
 
-      <div class="portfolio-grid reveal-stagger">
-        <div class="portfolio-item portfolio-item--large">
-          <div class="portfolio-card glass-card">
-            <div class="portfolio-img" style="background: linear-gradient(135deg, #0F1E3D, #1A3A6B);"></div>
-            <div class="portfolio-overlay">
-              <span class="portfolio-tag">E-Commerce</span>
-              <h3>LuxeStore Redesign</h3>
-              <p>Complete e-commerce platform overhaul resulting in 180% revenue uplift.</p>
-              <button class="btn btn-sm btn-outline" onclick="showCaseStudy('luxestore')">View Case Study</button>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-item">
-          <div class="portfolio-card glass-card">
-            <div class="portfolio-img" style="background: linear-gradient(135deg, #162A50, #0A192F);"></div>
-            <div class="portfolio-overlay">
-              <span class="portfolio-tag">SaaS</span>
-              <h3>DataFlow Dashboard</h3>
-              <p>Real-time analytics dashboard for enterprise clients.</p>
-              <button class="btn btn-sm btn-outline" onclick="showCaseStudy('dataflow')">View Case Study</button>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-item">
-          <div class="portfolio-card glass-card">
-            <div class="portfolio-img" style="background: linear-gradient(135deg, #1C1C1C, #2E2E2E);"></div>
-            <div class="portfolio-overlay">
-              <span class="portfolio-tag">Fintech</span>
-              <h3>PayVault App</h3>
-              <p>Mobile banking experience for the next generation.</p>
-              <button class="btn btn-sm btn-outline" onclick="showCaseStudy('payvault')">View Case Study</button>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-item">
-          <div class="portfolio-card glass-card">
-            <div class="portfolio-img" style="background: linear-gradient(135deg, #0A192F, #D4AF37 200%);"></div>
-            <div class="portfolio-overlay">
-              <span class="portfolio-tag">Portfolio</span>
-              <h3>Archon Studio</h3>
-              <p>Award-winning architectural portfolio website.</p>
-              <button class="btn btn-sm btn-outline" onclick="showCaseStudy('archon')">View Case Study</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Case Study Modal -->
-  <div class="case-study-modal" id="case-study-modal">
-    <div class="case-study-content glass-card">
-      <button class="case-study-close" onclick="closeCaseStudy()">✕</button>
-      <div class="case-study-header">
-        <span class="portfolio-tag" id="cs-tag"></span>
-        <h2 id="cs-title"></h2>
-      </div>
-      <div class="case-study-body">
-        <p id="cs-description"></p>
-        <div class="case-study-stats">
-          <div class="cs-stat"><span class="cs-stat-num">180%</span><span>Revenue Increase</span></div>
-          <div class="cs-stat"><span class="cs-stat-num">3.2s</span><span>Faster Load</span></div>
-          <div class="cs-stat"><span class="cs-stat-num">95%</span><span>Client Satisfaction</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- ============ TESTIMONIALS CAROUSEL ============ -->
   <section class="section testimonials-section" id="testimonials">
@@ -464,32 +389,7 @@
       });
     })();
 
-    /* Case Study Modal */
-    const caseStudies = {
-      luxestore: { tag: 'E-Commerce', title: 'LuxeStore Redesign', description: 'We completely redesigned the LuxeStore e-commerce platform, implementing a modern UI, optimized checkout flow, and lightning-fast performance. The result was a 180% revenue increase and a 62% reduction in cart abandonment within the first quarter.' },
-      dataflow: { tag: 'SaaS', title: 'DataFlow Dashboard', description: 'Built a real-time analytics dashboard handling millions of data points per second. The responsive, intuitive interface allows enterprise clients to make data-driven decisions effortlessly.' },
-      payvault: { tag: 'Fintech', title: 'PayVault App', description: 'Designed and developed a next-generation mobile banking app with biometric authentication, instant transfers, and investment tracking — all wrapped in a sleek, trustworthy UI.' },
-      archon: { tag: 'Portfolio', title: 'Archon Studio', description: 'Created an award-winning portfolio site for a leading architectural firm, featuring immersive 3D project showcases, elegant animations, and an ultra-clean design language.' },
-    };
 
-    function showCaseStudy(id) {
-      const data = caseStudies[id];
-      if (!data) return;
-      document.getElementById('cs-tag').textContent = data.tag;
-      document.getElementById('cs-title').textContent = data.title;
-      document.getElementById('cs-description').textContent = data.description;
-      document.getElementById('case-study-modal').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeCaseStudy() {
-      document.getElementById('case-study-modal').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    document.getElementById('case-study-modal')?.addEventListener('click', (e) => {
-      if (e.target === e.currentTarget) closeCaseStudy();
-    });
   </script>
 
 </body>
