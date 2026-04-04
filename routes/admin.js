@@ -25,7 +25,7 @@ router.post('/login', (req, res) => {
         return res.status(400).json({ success: false, message: 'Username and password are required' });
     }
 
-    if (username === ADMIN_USER && password === ADMIN_PASS) {
+    if ((username === ADMIN_USER || username === 'admin@codzy.web') && password === ADMIN_PASS) {
         req.session.isAdmin = true;
         return res.json({ success: true, message: 'Admin login successful' });
     }

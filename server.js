@@ -68,7 +68,21 @@ app.get('/templates', (req, res) => res.sendFile(path.join(__dirname, 'public', 
 app.get('/cart', (req, res) => res.sendFile(path.join(__dirname, 'public', 'cart.html')));
 app.get('/signup', (req, res) => res.sendFile(path.join(__dirname, 'public', 'signup.html')));
 
-/* ── Static Files (Assets) ── */
+/* ── Protected Admin Route ── */
+app.get('/admin', (req, res) => {
+    if (req.session && req.session.isAdmin) {
+        return res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+    }
+    return res.redirect('/login');
+});
+
+/* ── Static Files (Assets) — block direct admin.html access ── */
+app.use((req, res, next) => {
+    if (req.path === '/admin.html') {
+        return res.redirect('/login');
+    }
+    next();
+});
 app.use(express.static(path.join(__dirname, 'public')));
 
 /* ── Inject Google Client ID for frontend ── */

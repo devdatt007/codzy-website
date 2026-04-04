@@ -5,9 +5,6 @@
 const API = '/api/admin';
 
 /* ── DOM refs ── */
-const loginOverlay = document.getElementById('adminLoginOverlay');
-const loginForm = document.getElementById('adminLoginForm');
-const loginError = document.getElementById('adminLoginError');
 const dashboard = document.getElementById('adminDashboard');
 const logoutBtn = document.getElementById('adminLogoutBtn');
 const refreshBtn = document.getElementById('refreshData');
@@ -43,51 +40,25 @@ async function checkSession() {
         const data = await res.json();
         if (data.isAdmin) {
             showDashboard();
+        } else {
+            // Not authenticated — redirect to login
+            window.location.href = '/login';
         }
     } catch (e) {
-        // Not logged in, show login
+        // Error checking session — redirect to login
+        window.location.href = '/login';
     }
 }
-
-/* ── Login ── */
-loginForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    loginError.textContent = '';
-
-    const username = document.getElementById('adminUser').value.trim();
-    const password = document.getElementById('adminPass').value;
-
-    try {
-        const res = await fetch(`${API}/login`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, password }),
-        });
-        const data = await res.json();
-
-        if (data.success) {
-            showDashboard();
-        } else {
-            loginError.textContent = data.message || 'Invalid credentials';
-        }
-    } catch (err) {
-        loginError.textContent = 'Server error — please try again';
-    }
-});
 
 /* ── Logout ── */
 logoutBtn.addEventListener('click', async (e) => {
     e.preventDefault();
     await fetch(`${API}/logout`, { method: 'POST' });
-    loginOverlay.style.display = 'flex';
-    dashboard.style.display = 'none';
-    document.getElementById('adminUser').value = '';
-    document.getElementById('adminPass').value = '';
+    window.location.href = '/login';
 });
 
 /* ── Show dashboard ── */
 function showDashboard() {
-    loginOverlay.style.display = 'none';
     dashboard.style.display = 'flex';
     loadAllData();
 }

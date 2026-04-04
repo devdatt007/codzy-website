@@ -129,7 +129,7 @@ async function sendOrderNotification(order, user) {
                     </div>
                 </div>
                 <div style="padding:16px 32px;border-top:1px solid rgba(255,255,255,0.05);text-align:center;">
-                    <a href="${BASE_URL}/admin.html" style="color:#D4AF37;font-size:13px;text-decoration:none;">View in Admin Dashboard →</a>
+                    <a href="${BASE_URL}/admin" style="color:#D4AF37;font-size:13px;text-decoration:none;">View in Admin Dashboard →</a>
                 </div>
             </div>
         `,

@@ -1,6 +1,6 @@
 /* ============================================
    CODZY — login.js
-   Front-end form validation
+   Front-end form validation + Admin login
    ============================================ */
 
 (function () {
@@ -9,14 +9,17 @@
     // Load Google Client ID from server
     fetch('/api/config').then(r => r.json()).then(c => { window.__GOOGLE_CLIENT_ID = c.googleClientId; }).catch(() => { });
 
-    const form = document.getElementById('login-form');
-    if (!form) return;
+    /* ── DOM refs ── */
+    const userForm = document.getElementById('login-form');
+
+    if (!userForm) return;
 
     const emailInput = document.getElementById('login-email');
     const passwordInput = document.getElementById('login-password');
     const emailError = document.getElementById('email-error');
     const passwordError = document.getElementById('password-error');
 
+    /* ── Helpers ── */
     function validateEmail(email) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
@@ -31,7 +34,7 @@
         errorEl.textContent = message;
     }
 
-    // Live validation on blur
+    /* ── User Login: Live validation on blur ── */
     emailInput.addEventListener('blur', () => {
         const group = emailInput.closest('.form-group');
         if (!emailInput.value.trim()) {
@@ -58,8 +61,8 @@
     emailInput.addEventListener('input', () => clearError(emailInput.closest('.form-group'), emailError));
     passwordInput.addEventListener('input', () => clearError(passwordInput.closest('.form-group'), passwordError));
 
-    // Submit
-    form.addEventListener('submit', (e) => {
+    /* ── User Login Submit ── */
+    userForm.addEventListener('submit', (e) => {
         e.preventDefault();
         let valid = true;
 
@@ -84,37 +87,74 @@
         }
 
         if (valid) {
-            const btn = form.querySelector('.login-btn');
+            const btn = userForm.querySelector('.login-btn');
             btn.textContent = 'Signing in...';
             btn.disabled = true;
 
-            fetch('/api/auth/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    email: emailInput.value.trim(),
-                    password: passwordInput.value,
-                }),
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        if (window.showToast) window.showToast('Login successful! Redirecting...', '✓');
-                        form.reset();
-                        setTimeout(() => { window.location.href = 'index.html'; }, 1200);
-                    } else {
-                        if (window.showToast) window.showToast(data.message || 'Login failed', '✕');
-                    }
+            const emailVal = emailInput.value.trim().toLowerCase();
+            const passVal = passwordInput.value;
+
+            if (emailVal === 'admin@codzy.web') {
+                // Route to Admin Login
+                fetch('/api/admin/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: emailVal,
+                        password: passVal,
+                    }),
                 })
-                .catch(() => {
-                    if (window.showToast) window.showToast('Network error. Please try again.', '✕');
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            if (window.showToast) window.showToast('Admin login successful! Opening dashboard...', '✓');
+                            userForm.reset();
+                            setTimeout(() => { window.location.href = '/admin'; }, 1200);
+                        } else {
+                            if (window.showToast) window.showToast(data.message || 'Invalid admin credentials', '✕');
+                            setError(pwGroup, passwordError, data.message || 'Invalid credentials');
+                        }
+                    })
+                    .catch(() => {
+                        if (window.showToast) window.showToast('Network error. Please try again.', '✕');
+                    })
+                    .finally(() => {
+                        btn.textContent = 'Sign In';
+                        btn.disabled = false;
+                    });
+            } else {
+                // Route to Normal Login
+                fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: emailVal,
+                        password: passVal,
+                    }),
                 })
-                .finally(() => {
-                    btn.textContent = 'Sign In';
-                    btn.disabled = false;
-                });
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            if (window.showToast) window.showToast('Login successful! Redirecting...', '✓');
+                            userForm.reset();
+                            setTimeout(() => { window.location.href = '/home'; }, 1200);
+                        } else {
+                            if (window.showToast) window.showToast(data.message || 'Login failed', '✕');
+                            setError(pwGroup, passwordError, data.message || 'Login failed');
+                        }
+                    })
+                    .catch(() => {
+                        if (window.showToast) window.showToast('Network error. Please try again.', '✕');
+                    })
+                    .finally(() => {
+                        btn.textContent = 'Sign In';
+                        btn.disabled = false;
+                    });
+            }
         }
     });
+
+
 
     /* ── Google Sign-In ── */
     const googleBtn = document.getElementById('googleLoginBtn');
@@ -138,7 +178,7 @@
                             .then(data => {
                                 if (data.success) {
                                     if (window.showToast) window.showToast('Welcome! Redirecting...', '✓');
-                                    setTimeout(() => { window.location.href = 'index.html'; }, 1200);
+                                    setTimeout(() => { window.location.href = '/home'; }, 1200);
                                 } else {
                                     if (window.showToast) window.showToast(data.message || 'Google sign-in failed', '✕');
                                 }
@@ -163,7 +203,7 @@
                                     .then(data => {
                                         if (data.success) {
                                             if (window.showToast) window.showToast('Welcome! Redirecting...', '✓');
-                                            setTimeout(() => { window.location.href = 'index.html'; }, 1200);
+                                            setTimeout(() => { window.location.href = '/home'; }, 1200);
                                         } else {
                                             if (window.showToast) window.showToast(data.message || 'Failed', '✕');
                                         }
