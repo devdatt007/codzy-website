@@ -456,7 +456,7 @@ input[type="submit"],
 
     .admin-sidebar-logo,
     .admin-sidebar-label,
-    .admin-nav-link span:not(.admin-nav-icon) {
+    .admin-nav-text {
         display: none;
     }
 
