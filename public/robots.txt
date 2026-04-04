@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Disallow private/admin routes
+Disallow: /admin
+Disallow: /cart
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://codzyweb.co.in/sitemap.xml
