@@ -15,6 +15,7 @@ const path = require('path');
 
 // Initialize database (creates tables on first run)
 const db = require('./db/database');
+const SqliteStore = require('better-sqlite3-session-store')(session);
 
 const app = express();
 const PORT = process.env.PORT || 2010;
@@ -27,6 +28,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(session({
+    store: new SqliteStore({
+        client: db,
+        expired: {
+            clear: true,
+            intervalMs: 900000 // ms = 15min
+        }
+    }),
     secret: process.env.SESSION_SECRET || 'codzy-fallback-secret',
     resave: false,
     saveUninitialized: false,
@@ -47,7 +55,10 @@ app.use((req, res, next) => {
     next();
 });
 // Main static file server
-app.use(express.static(path.resolve(__dirname, 'public')));
+app.use(express.static(path.resolve(__dirname, 'public'), {
+    maxAge: '1d', // Cache static assets to prevent reload drops
+    etag: true
+}));
 
 /* ── Clean URL Redirects (Executes before static files) ── */
 app.get('/', (req, res) => {
