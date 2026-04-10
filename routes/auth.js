@@ -64,6 +64,25 @@ router.post('/login', (req, res) => {
             return res.status(400).json({ success: false, message: 'Email and password are required.' });
         }
 
+        // ── 1. Check if this is the Admin ──
+        const ADMIN_USER = process.env.ADMIN_USERNAME;
+        const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+
+        if (ADMIN_USER && email.toLowerCase().trim() === ADMIN_USER.toLowerCase().trim()) {
+            if (password === ADMIN_PASSWORD) {
+                req.session.isAdmin = true;
+                return res.json({
+                    success: true,
+                    message: 'Admin login successful.',
+                    isAdmin: true,
+                    user: { name: 'Admin', email: ADMIN_USER }
+                });
+            } else {
+                return res.status(401).json({ success: false, message: 'Invalid admin credentials.' });
+            }
+        }
+
+        // ── 2. Check standard users ──
         const user = db.prepare('SELECT * FROM users WHERE email = ?').get(email.toLowerCase().trim());
         if (!user) {
             return res.status(401).json({ success: false, message: 'Invalid email or password.' });

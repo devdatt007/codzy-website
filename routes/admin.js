@@ -8,8 +8,8 @@ const router = express.Router();
 const db = require('../db/database');
 
 /* ── Admin credentials from .env ── */
-const ADMIN_USER = process.env.ADMIN_USERNAME || 'admin';
-const ADMIN_PASS = process.env.ADMIN_PASSWORD || 'codzy2026';
+const ADMIN_USER = process.env.ADMIN_USERNAME;
+const ADMIN_PASS = process.env.ADMIN_PASSWORD;
 
 /* ── Middleware: check admin session ── */
 function requireAdmin(req, res, next) {
@@ -25,7 +25,7 @@ router.post('/login', (req, res) => {
         return res.status(400).json({ success: false, message: 'Username and password are required' });
     }
 
-    if ((username === ADMIN_USER || username === 'admin@codzy.web') && password === ADMIN_PASS) {
+    if (username === ADMIN_USER && password === ADMIN_PASS && ADMIN_USER) {
         req.session.isAdmin = true;
         return res.json({ success: true, message: 'Admin login successful' });
     }
@@ -141,7 +141,7 @@ router.post('/reset-database', requireAdmin, (req, res) => {
 
         // Security layer 1: Must be admin session (already checked by middleware)
         // Security layer 2: Must re-enter admin password
-        if (!password || password !== ADMIN_PASS) {
+        if (!password || !ADMIN_PASS || password !== ADMIN_PASS) {
             return res.status(403).json({ success: false, message: 'Invalid admin password.' });
         }
 

@@ -44,10 +44,10 @@
 
   /* ── Active Nav Link ── */
   const navLinks = document.querySelectorAll('.nav-links a');
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const currentPath = window.location.pathname;
   navLinks.forEach(link => {
     const href = link.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+    if (href === currentPath || (currentPath === '/' && href === '/home')) {
       link.classList.add('active');
     }
   });
@@ -282,7 +282,7 @@
         window.__user = data.user;
 
         // Replace "Login" link with user avatar
-        const loginLink = document.querySelector('.nav-links a[href="login.html"]');
+        const loginLink = document.querySelector('.nav-links a[href="/login"]');
         if (loginLink) {
           loginLink.style.display = 'none';
         }
@@ -304,7 +304,7 @@
                 <span class="nav-user-email">${data.user.email}</span>
               </div>
               <div class="nav-user-divider"></div>
-              <a href="cart.html" class="nav-user-item">🛒 My Cart</a>
+              <a href="/cart" class="nav-user-item">🛒 My Cart</a>
               <button class="nav-user-item nav-logout-btn">🚪 Logout</button>
             </div>
           `;

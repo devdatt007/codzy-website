@@ -17,7 +17,7 @@ const path = require('path');
 const db = require('./db/database');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 2010;
 const isProduction = process.env.NODE_ENV === 'production';
 
 /* ── Middleware ── */
@@ -37,6 +37,17 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
     },
 }));
+
+/* ── Static Files (Assets) ── */
+// block direct admin.html access
+app.use((req, res, next) => {
+    if (req.path === '/admin.html') {
+        return res.redirect('/login');
+    }
+    next();
+});
+// Main static file server
+app.use(express.static(path.resolve(__dirname, 'public')));
 
 /* ── Clean URL Redirects (Executes before static files) ── */
 app.get('/', (req, res) => {
@@ -76,14 +87,6 @@ app.get('/admin', (req, res) => {
     return res.redirect('/login');
 });
 
-/* ── Static Files (Assets) — block direct admin.html access ── */
-app.use((req, res, next) => {
-    if (req.path === '/admin.html') {
-        return res.redirect('/login');
-    }
-    next();
-});
-app.use(express.static(path.join(__dirname, 'public')));
 
 /* ── Inject Google Client ID for frontend ── */
 app.get('/api/config', (req, res) => {

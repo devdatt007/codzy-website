@@ -79,7 +79,7 @@ async function sendWelcomeEmail(userEmail, userName, isFirstLogin = false) {
                     <p style="color:#CCD6F6;line-height:1.7;margin:0 0 24px;">
                         Explore our premium templates, manage your projects, and build something extraordinary.
                     </p>
-                    <a href="${BASE_URL}/templates.html" style="display:inline-block;padding:12px 28px;background:linear-gradient(135deg,#B8860B,#D4AF37);color:#0A192F;font-weight:700;text-decoration:none;border-radius:8px;font-size:14px;">Browse Templates</a>
+                    <a href="${BASE_URL}/templates" style="display:inline-block;padding:12px 28px;background:linear-gradient(135deg,#B8860B,#D4AF37);color:#0A192F;font-weight:700;text-decoration:none;border-radius:8px;font-size:14px;">Browse Templates</a>
                 </div>
                 <div style="padding:16px 32px;border-top:1px solid rgba(255,255,255,0.05);text-align:center;">
                     <p style="color:#4A5568;font-size:11px;margin:0;">© 2026 Codzy. All rights reserved.</p>
