@@ -124,6 +124,10 @@ app.use((err, req, res, next) => {
 });
 
 /* ── Start ── */
-app.listen(PORT, () => {
-    console.log(`\n  ✦ Codzy server running at http://localhost:${PORT}\n`);
+const server = app.listen(PORT, '0.0.0.0', () => {
+    console.log(`\n  ✦ Codzy server running unconditionally on port ${PORT}\n`);
 });
+
+// Render recommendation: increase timeouts to prevent 502 Bad Gateway
+server.keepAliveTimeout = 120000; // 120 seconds
+server.headersTimeout = 120000; // 120 seconds
