@@ -5,6 +5,7 @@
 
 const express = require('express');
 const db = require('../db/database');
+const { sendContactNotification } = require('../utils/email');
 
 const router = express.Router();
 
@@ -24,10 +25,13 @@ router.post('/', (req, res) => {
             return res.status(400).json({ success: false, message: 'Message must be at least 10 characters.' });
         }
 
-        db.prepare('INSERT INTO contacts (name, email, subject, message) VALUES (?, ?, ?, ?)')
+        const result = db.prepare('INSERT INTO contacts (name, email, subject, message) VALUES (?, ?, ?, ?)')
             .run(name.trim(), email.toLowerCase().trim(), subject.trim(), message.trim());
 
         res.status(201).json({ success: true, message: 'Message sent successfully. We\'ll be in touch!' });
+
+        // Notify admin via email
+        sendContactNotification({ name, email, subject, message }).catch(err => console.error('Contact email failed:', err));
     } catch (err) {
         console.error('Contact error:', err.message);
         res.status(500).json({ success: false, message: 'Server error. Please try again.' });

@@ -162,6 +162,35 @@ async function sendSubscriptionNotification(subscriberEmail) {
     console.log(`✉ Subscription notification sent to admin`);
 }
 
+/* ── Notify admin of new contact message ── */
+async function sendContactNotification(contact) {
+    const adminEmail = process.env.ADMIN_EMAIL || SENDER_EMAIL;
+    await safeSendMail({
+        to: adminEmail,
+        subject: `📧 New Message: ${contact.subject}`,
+        html: `
+            <div style="font-family:'Segoe UI',Arial,sans-serif;max-width:560px;margin:0 auto;background:#0A192F;color:#fff;border-radius:12px;overflow:hidden;">
+                <div style="background:linear-gradient(135deg,#0A192F,#162A50);padding:32px;text-align:center;">
+                    <h1 style="margin:0 0 4px;font-size:28px;letter-spacing:3px;">COD<span style="color:#D4AF37;">ZY</span></h1>
+                    <p style="color:#D4AF37;font-size:14px;font-weight:600;margin:8px 0 0;">New Contact Form Submission!</p>
+                </div>
+                <div style="padding:32px;">
+                    <div style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.15);border-radius:8px;padding:16px;margin-bottom:24px;">
+                        <p style="margin:0;color:#CCD6F6;"><strong>From:</strong> ${contact.name}</p>
+                        <p style="margin:4px 0 0;color:#CCD6F6;"><strong>Email:</strong> ${contact.email}</p>
+                        <p style="margin:4px 0 0;color:#CCD6F6;"><strong>Subject:</strong> ${contact.subject}</p>
+                    </div>
+                    <div style="color:#CCD6F6;line-height:1.7;white-space:pre-wrap;background:rgba(255,255,255,0.03);padding:16px;border-radius:8px;">${contact.message}</div>
+                </div>
+                <div style="padding:16px 32px;border-top:1px solid rgba(255,255,255,0.05);text-align:center;">
+                    <a href="${BASE_URL}/admin" style="color:#D4AF37;font-size:13px;text-decoration:none;">View in Admin Dashboard →</a>
+                </div>
+            </div>
+        `,
+    });
+    console.log(`✉ Contact notification sent to admin`);
+}
+
 /* ── Send order confirmation to customer ── */
 async function sendOrderConfirmation(userEmail, userName, order) {
     const items = JSON.parse(order.items || '[]');
@@ -211,4 +240,4 @@ async function sendOrderConfirmation(userEmail, userName, order) {
     console.log(`✉ Order confirmation sent to ${userEmail}`);
 }
 
-module.exports = { sendWelcomeEmail, sendOrderNotification, sendSubscriptionNotification, sendOrderConfirmation };
+module.exports = { sendWelcomeEmail, sendOrderNotification, sendSubscriptionNotification, sendOrderConfirmation, sendContactNotification };
